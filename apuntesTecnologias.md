@@ -43,6 +43,6 @@
     - tambien se puede agregar al final algo como un `--port 0000` para cambiar el puerto
     - Nota: si se quiere ejecutar en produccion se puede usar `uvicorn main:app --host 0.0.0.0 --port 8000` 
 
-
+editado desde pc para subir a github
  
 
