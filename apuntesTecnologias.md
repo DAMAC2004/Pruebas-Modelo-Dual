@@ -52,7 +52,7 @@ El comando git push se utiliza para subir los cambios realizados en un repositor
 
 Ejemplo básico
 
-´git push -u origin main´
+`git push -u origin main`
 
 #### Consideraciones importantes
 
@@ -70,7 +70,7 @@ El comando git pull se utiliza para actualizar un repositorio local con los camb
 
 Sintaxis básica
 
-git pull origin main
+`git pull origin main`
 
 #### consideraciones importantes
 1. En este caso, origin es el nombre del repositorio remoto y main es la rama que se desea actualizar.
