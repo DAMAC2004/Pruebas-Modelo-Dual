@@ -151,3 +151,6 @@ Copiar
 Esto asegura que tus cambios locales se reescriban sobre los cambios remotos, evitando confirmaciones de fusión innecesarias.
 
 El comando git pull es esencial para sincronizar tu trabajo local con el remoto, especialmente en flujos de trabajo colaborativos.
+
+git push -u origin main
+040904
