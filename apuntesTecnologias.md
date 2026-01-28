@@ -154,3 +154,5 @@ El comando git pull es esencial para sincronizar tu trabajo local con el remoto,
 
 git push -u origin main
 040904
+
+pull origin main
