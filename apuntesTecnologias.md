@@ -43,11 +43,8 @@
     - tambien se puede agregar al final algo como un `--port 0000` para cambiar el puerto
     - Nota: si se quiere ejecutar en produccion se puede usar `uvicorn main:app --host 0.0.0.0 --port 8000` 
 
-editado desde pc para subir a github
- 
-subido desde kiro
 
-## comando git hub
+## Comandos git hub
 
 ### Comando git push
 
@@ -55,104 +52,50 @@ El comando git push se utiliza para subir los cambios realizados en un repositor
 
 Ejemplo básico
 
-git push origin main
+´git push -u origin main´
 
-Este comando sube los cambios de la rama local main al repositorio remoto llamado origin.
+#### Consideraciones importantes
 
-Sintaxis general
+1. Antes de usar git push, asegúrate de haber realizado un commit de todos los cambios locales con git commit.
 
-git push <nombre-remoto> <nombre-rama>
+2. Si el remoto tiene cambios no sincronizados, es recomendable hacer un git pull antes de realizar el push.
 
-<nombre-remoto>: Generalmente es origin, que apunta al repositorio remoto.
+3. Usa --force solo si estás seguro de que no sobrescribirás trabajo importante en el remoto.
 
-<nombre-rama>: Especifica la rama que deseas subir, como main o develop.
-
-Opciones comunes
-
-Subir todas las ramas:
-
-git push --all origin
-Copiar
-Forzar un push:
-
-git push --force origin main
-Copiar
-Eliminar una rama remota:
-
-git push origin --delete <nombre-rama>
-Copiar
-Ignorar hooks pre-push:
-
-git push --no-verify
-Copiar
-Consideraciones importantes
-
-Antes de usar git push, asegúrate de haber realizado un commit de todos los cambios locales con git commit.
-
-Si el remoto tiene cambios no sincronizados, es recomendable hacer un git pull antes de realizar el push.
-
-Usa --force solo si estás seguro de que no sobrescribirás trabajo importante en el remoto.
-
-Este comando es esencial para colaborar en proyectos compartidos y mantener el código actualizado en el servidor remoto.
+4. Este comando es esencial para colaborar en proyectos compartidos y mantener el código actualizado en el servidor remoto.
 
 ### Comando git pull en Git
+
 El comando git pull se utiliza para actualizar un repositorio local con los cambios realizados en un repositorio remoto. Es una combinación de dos comandos: git fetch y git merge, lo que significa que primero descarga los cambios del remoto y luego los fusiona automáticamente en la rama local.
 
 Sintaxis básica
 
-git pull [opciones] [repositorio] [refspec]
-Copiar
-Ejemplo de uso:
-
 git pull origin main
-Copiar
-En este caso, origin es el nombre del repositorio remoto y main es la rama que se desea actualizar.
 
-Funcionamiento
+#### consideraciones importantes
+1. En este caso, origin es el nombre del repositorio remoto y main es la rama que se desea actualizar.
+2. El comando git pull es esencial para sincronizar tu trabajo local con el remoto, especialmente en flujos de trabajo colaborativos.
 
-git fetch: Descarga las actualizaciones del repositorio remoto, pero no las aplica directamente.
+## Iniciar git en kiro
 
-git merge: Fusiona las actualizaciones descargadas en la rama local activa.
+### clave ssh
 
-Por ejemplo, si estás trabajando en la rama main y ejecutas git pull, Git traerá los cambios remotos de main y los integrará en tu copia local.
+1. generar una clave ssh con: `ssh-keygen -t ed25519 -C "tu_correo@example.com"`
+2. y despues ejecutar para copiar tu llave: `clip ~/.ssh/id_ed25519.pub`
+3. ir a ajustes en github y pegarla en las claves ssh
 
-Opciones comunes
+### pasos basicos en kiro
 
---rebase: En lugar de fusionar los cambios, reescribe el historial local para que sea lineal.
-
-git pull --rebase origin main
-Copiar
---no-commit: Descarga los cambios pero no crea automáticamente una confirmación de fusión.
-
-git pull --no-commit origin main
-Copiar
---verbose: Muestra detalles adicionales sobre el proceso de descarga y fusión.
-
-git pull --verbose
-Copiar
-Consideraciones importantes
-
-Si tienes cambios locales no confirmados, git pull puede fallar durante la fusión. Es recomendable confirmar o guardar tus cambios antes de ejecutar este comando.
-
-git pull puede generar conflictos si los cambios locales y remotos afectan las mismas líneas de código. En este caso, deberás resolver los conflictos manualmente.
-
-Diferencia entre git pull y git fetch
-
-git fetch: Solo descarga los cambios remotos sin aplicarlos al repositorio local.
-
-git pull: Descarga y aplica los cambios automáticamente, lo que puede provocar conflictos si no se tiene cuidado.
-
-Ejemplo con rebase
-
-Si prefieres mantener un historial limpio y lineal, puedes usar la opción --rebase:
-
-git pull --rebase origin main
-Copiar
-Esto asegura que tus cambios locales se reescriban sobre los cambios remotos, evitando confirmaciones de fusión innecesarias.
-
-El comando git pull es esencial para sincronizar tu trabajo local con el remoto, especialmente en flujos de trabajo colaborativos.
-
-git push -u origin main
-040904
-
-pull origin main
+1. primero instalar git
+2. luego en la temrinal de kiro verificar si git aparece como comando usable
+3. si es usable inicializar un repositorio con ´git init´
+4. agregar los cambios con `git add .`
+5. hacer commit con `git commit -m "mensaje"`
+6. conectar con el repositorio remoto con `git remote add origin XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX`
+7. subir con: `git push -u origin main`- `origin` es el nombre del repositorio remoto
+    - `main` es la rama a la que se quiere subir
+    - si da error de rama puede ser `git push origin main`
+    - si da error de permiso puede ser por el ssh, revisar clave ssh
+    - `-u` es para establecer el upstream, es decir, recordar que `origin` es el remoto y `main` es la rama
+    - tambien puede llegar a pedir contraseña si la llave ssh fue colocada con contraseña ejemplo `040904`
+8. si quieres bajar algo del repositorio usar `pull origin main`
